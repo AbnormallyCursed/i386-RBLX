@@ -1,5 +1,5 @@
 # i386
-i386-RBLX: A x86-32 (x86/IA-32/i386) emulator for ROBLOX, I consider this project complete, I managed to run a basic C++ program compiled with GCC and that's good enough for me. This as a CPU is nowhere near done even so, because x86 is a massive ISA. If anyone wants to fork this and continue it, feel free, I'd love to see it.
+i386-RBLX: A x86-32 (x86/IA-32/i386) emulator for ROBLOX, I consider this project complete, I managed to run a basic C++ program compiled with GCC and that's good enough for me. This as a CPU is nowhere near done even because x86 is a massive ISA, I would love to complete it but I can't find the time. If anyone wants to fork this and continue it, feel free, I'd love to see it.
 
 You add new instructions by editing files in the following directory:
 "src" > "compiler" > "Instruction Prototypes"
