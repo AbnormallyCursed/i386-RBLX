@@ -1,0 +1,115 @@
+--!strict
+--!native
+export type _instructionByteSwitch = {[number]: (...number) -> number}
+export type _instructionArray = {[number]: (...number) -> number}
+export type _prefixArray = {[number]: boolean}
+export type _subDecode = {[string]: (number, number, number) -> number}
+export type _services = {[string]: Instance}
+export type _bufferSegment = {[number]: buffer}
+export type _segment_bytes = {[number]: number}
+export type _segment_description_cache = {[number]: _segment_descriptor}
+export type _machineCode = {[number]: number}
+export type _segment_descriptor = {
+	limit: number,
+	base: number,
+	accessed: number,
+	readable_writable: number,
+	conforming_expand_down: number,
+	executable: number,
+	descriptor_type: number,
+	dpl: number,
+	present: number,
+	available: number,
+	long_mode: number,
+	default_big: number,
+	granularity: number,
+}
+export type _i386 = {
+	services: any,
+	instruction_definitions_multi: _instructionArray,
+	instruction_definitions_single: _instructionArray,
+	buffer_max_size: number,
+	buffer_segment: _bufferSegment,
+	cores: number,
+	coreIndex: number,
+	debugPrintEnabled: boolean,
+	registers: buffer,
+	write8: (number, number) -> (),
+	write16: (number, number) -> (),
+	write32: (number, number) -> (),
+	read8: (number) -> number,
+	read16: (number) -> number,
+	read32: (number) -> number,
+	write8s: (number, number) -> (),
+	write16s: (number, number) -> (),
+	write32s: (number, number) -> (),
+	read8s: (number) -> number,
+	read16s: (number) -> number,
+	read32s: (number) -> number,
+	write32f: (number, number) -> (),
+	read32f: (number) -> number,
+	construct_cores: (_i386) -> (),
+	master_decode: () -> (),
+	initInstructionDecoder: (_i386) -> (),
+	directArrayPrefix: _prefixArray,
+	multiByteDecoders: _instructionByteSwitch,
+	singleByteDecoders: _instructionByteSwitch,
+	SegmentDescriptorCache: _segment_description_cache,
+	decode_segment_descriptor: (_segment_bytes) -> _segment_descriptor,
+	get_segment_descriptor_at: (number) -> _segment_descriptor,
+	runCore: (number, ...any) -> (),
+	addCurrentCoreToActor: (_i386) -> (),
+	sub_decode_func_multi: _subDecode, -- so silli uwu
+	sub_decode_func_single: _subDecode,
+	cpu_fast_bitwise_flag: number,
+	arithmeticUpdateFlags: (_i386, number) -> (),
+	constructRegisters: (_i386) -> (),
+	register_priority: {string},
+	registerEncoding: any, -- myb do full table idk
+	jsonMultiByte: string,
+	jsonSingleByte: string,
+	decodeData: (_i386) -> (),
+	compilerDataMaster: {any},
+	osa: boolean,
+	cpu_cores: {_i386},
+	initModrmSilliness: any, -- temp func wont exist in future
+	compileInstructions: any, -- temp func wont exist in future
+	single_instruction_constructor: (_i386) -> (),
+	multi_instruction_constructor: (_i386) -> (),
+	init_buffer_physical_memory: (_i386) -> (),
+	runBenchmark: (_i386, number, number) -> (),
+	pre1gb: buffer,
+	loadMachineCodeToMemory: (_i386, _machineCode) -> (),
+	initializedCores: number,
+	decimalToBits: (number) -> (string),
+	cpu_buffer: buffer,
+	asa: boolean,
+}
+export type _jsonInstruction = {
+	["pf"]: string,
+	["0F"]: string,
+	["po"]: string,
+	["so"]: string,
+	["flds"]: string,
+	["o"]: string,
+	["proc"]: string,
+	["st"]: string,
+	["m"]: string,
+	["rl"]: string,
+	["x"]: string,
+	["mnemonic"]: string,
+	["op1"]: string,
+	["op2"]: string,
+	["op3"]: string,
+	["op4"]: string,
+	["iext"]: string,
+	["grp1"]: string,
+	["grp2"]: string,
+	["grp3"]: string,
+	["tested f"]: string,
+	["modif f"]: string,
+	["def f"]: string,
+	["undef f"]: string,
+	["f values"]: string,
+}
+return {}
